@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Brian2694\Toastr\Facades\Toastr;
 
+use App\Models\Property;
+
 class LoginController extends Controller
 {
     public function showLoginForm(){
@@ -70,6 +72,8 @@ class LoginController extends Controller
     }
 
     public function dashboard(){
+
+     
         return view('admin.pages.dashboard');
     }
 }

@@ -24,9 +24,9 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href=" "> All Properties</a></li>
+                        <li><a href="{{ route('admin.properties')}}"> All Properties</a></li>
                         
-                        <li><a href=" "> Add Property</a></li>
+                        <li><a href="{{ route('admin.property.create')}}"> Add Property</a></li>
                          
                     </ul>
                 </li>

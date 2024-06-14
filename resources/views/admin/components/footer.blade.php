@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                2024 &copy; Tax zone Cumilla 
+                2024 &copy; Property Management. 
             </div>
 
         </div>

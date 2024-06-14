@@ -54,7 +54,7 @@
                                     <div class="page-title-right">
                                         
                                     </div>
-                                    <h4 class="page-title">Dashboard</h4>
+                                    <h4 class="page-title"> Property Management System </h4>
                                 </div>
                             </div>
                         </div>     
