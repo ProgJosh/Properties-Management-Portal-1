@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('phone')->nullable();
+            $table->tinyInteger('role')->default(1)->comment('0 = Admin, 1 = Landlords');
+            $table->string('image')->nullable();
+            $table->tinyInteger('status')->default('1')->comment('0 = Inactive, 1 = Active');
+            $table->string('address')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('nid')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+
             $table->timestamps();
         });
     }

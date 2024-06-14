@@ -10,7 +10,7 @@
                 <li class="menu-title">Navigation</li>
 
                 <li>
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="fe-airplay"></i>
                         
                         <span> Dashboard </span>

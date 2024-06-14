@@ -4,13 +4,13 @@
 
         
 
-
-     
+        
+      
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{{ Auth::user()->profile_photo_url }}" alt="user-image" class="rounded-circle">
-                <span class="ml-1">{{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> </span>
+                <img src="{{ Auth::guard('admin')->user()->image ?? asset('assets/images/users/avatar-2.jpg')  }}" alt="user-image" class="rounded-circle">
+                <span class="ml-1">{{ Auth::guard('admin')->user()->name }} <i class="mdi mdi-chevron-down"></i> </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                 <!-- item-->
