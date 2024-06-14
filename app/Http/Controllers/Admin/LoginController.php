@@ -49,6 +49,26 @@ class LoginController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
+    public function login(Request $request){
+      
+        $data = $request->only('email', 'password');
+
+
+        if(Auth::guard('admin')->attempt($data)){
+            return redirect()->route('admin.dashboard');
+        }
+
+    
+        Toastr::error('Invalid Credentials');
+        return redirect()->back();
+    }
+
+
+    public function logout(){
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login');
+    }
+
     public function dashboard(){
         return view('admin.pages.dashboard');
     }

@@ -15,7 +15,7 @@
         <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/icons.min.css" rel="stylesheet')}}" type="text/css" />
         <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
-
+        <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     </head>
 
     <body class="authentication-bg bg-gradient">
@@ -36,23 +36,28 @@
 
                                     </div>
     
-                                    <form action="mt-3">
-    
+                                    <form action="{{route('admin.login')}}" method="POST">
+                                        @csrf
                                         <div class="form-group mb-3">
-                                            <label for="emailaddress">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                            <label for="emailaddress"  >Email address</label>
+                                            <input class="form-control" type="email" name="email" id="emailaddress" required="" placeholder="Enter your email">
+
+                                            @error('email')
+                                                <span class="text-danger">{{$message}}</span>
+                                            @enderror
+
                                         </div>
     
                                         <div class="form-group mb-3">
-                                                <a href="page-recoverpw.html" class="text-muted float-right"><small>Forgot your password?</small></a>
+                                                <a href="#" class="text-muted float-right"><small>Forgot your password?</small></a>
 
                                             <label for="password">Password</label>
-                                            <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
+                                            <input class="form-control" type="password" name="password" required="" id="password" placeholder="Enter your password">
                                         </div>
     
                                         <div class="form-group mb-3">
                                             <div class="custom-control custom-checkbox checkbox-success">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                                                <input type="checkbox" class="custom-control-input" id="checkbox-signin">
                                                 <label class="custom-control-label" for="checkbox-signin">Remember me</label>
                                             </div>
                                         </div>
@@ -65,7 +70,7 @@
     
                                     <div class="row mt-4">
                                             <div class="col-sm-12 text-center">
-                                                <p class="text-muted mb-0">Don't have an account? <a href="pages-register.html" class="text-dark ml-1"><b>Sign Up</b></a></p>
+                                                <p class="text-muted mb-0">Don't have an account? <a href=" {{route('admin.register')}}" class="text-dark ml-1"><b>Sign Up</b></a></p>
                                             </div>
                                         </div>
 
@@ -90,6 +95,7 @@
 
         <!-- App js -->
         <script src="assets/js/app.min.js"></script>
-        
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
     </body>
 </html>

@@ -20,13 +20,13 @@
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-briefcase"></i>
-                        <span> Notice Board </span>
+                        <span> Properties </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href=" ">Notices</a></li>
+                        <li><a href=" "> All Properties</a></li>
                         
-                        <li><a href=" ">Add Notice</a></li>
+                        <li><a href=" "> Add Property</a></li>
                          
                     </ul>
                 </li>
