@@ -34,9 +34,14 @@ class HomeController extends Controller
             $location = request('location');
             $query->whereRaw('location REGEXP ?', [$location]);
         }
-    
+
+        if(request()->has('keyword') && !empty(request('keyword'))){
+            $query->whereRaw('name REGEXP ?', [request('keyword')]);
+        }
+
+        
         // Apply type filter if it exists
-        if (request()->has('type')) {
+        if (request()->has('type') && request('type') !== 'all') {
             $query->where('type', request('type'));
         }
     

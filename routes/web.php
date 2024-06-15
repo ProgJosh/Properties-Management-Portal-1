@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PropertiesController;
 use App\Http\Controllers\Admin\LandlordsController;
 use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\Frontend\HomeController; 
+use App\Http\Controllers\Frontend\BookingController;
 
 require_once __DIR__.'/jetstream.php';
 
@@ -14,8 +15,7 @@ Route::get('/properties', [HomeController::class, 'properties'])->name('properti
 Route::get('/property/{id}', [HomeController::class, 'property'])->name('property');
 
 Route::get('properties/{type}', [HomeController::class, 'propertyByType'])->name('propertyByType');
-
-
+Route::get('booking/{id}', [BookingController::class, 'index'])->name('booking')->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

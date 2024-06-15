@@ -17,18 +17,15 @@
                         <a href="{{ url('/') }}" class="nav-menu__link">Home</a>
                        
                     </li>
-                    <li class="nav-menu__item ">
-                        <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
-                       
-                    </li>
+                 
                     <li class="nav-menu__item has-submenu">
                         <a href="javascript:void(0)" class="nav-menu__link">Project</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
-                                <a href="project.html" class="nav-submenu__link"> Project </a>
+                                <a href="" class="nav-submenu__link"> Project </a>
                             </li>
                             <li class="nav-submenu__item">
-                                <a href="project-details.html" class="nav-submenu__link">Project Details</a>
+                                <a href="" class="nav-submenu__link">Project Details</a>
                             </li>
                         </ul>
                     </li>
@@ -37,7 +34,32 @@
                          
                     </li>
                     <li class="nav-menu__item">
-                        <a href="contact.html" class="nav-menu__link">Contact</a>
+                        <a href="" class="nav-menu__link">Contact</a>
+                    </li>
+
+                    <li class="nav-menu__item has-submenu">
+                        @if (Auth::check())
+
+                     
+
+                            <a href="{{route('dashboard')}}" class="nav-menu__link">Dashboard</a>
+
+                            <ul class="nav-submenu">
+                                <li class="nav-submenu__item">
+                                    <a href="" class="nav-submenu__link"> Profile </a>
+                                </li>
+                                <li class="nav-submenu__item ">
+                                    <form action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="nav-submenu__link text-start mx-2">Logout</button>
+                                    </form>
+                             
+                                </li>
+                            </ul>
+                            
+                        @else
+                        <a href="{{route('login')}}" class="nav-menu__link">Login</a>
+                        @endif
                     </li>
                 </ul>
             </div>

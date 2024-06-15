@@ -31,55 +31,36 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <ul class="common-tab nav nav-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-rent-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-rent" type="button" role="tab"
-                                aria-controls="pills-rent" aria-selected="true">Rent</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-buy-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-buy" type="button" role="tab"
-                                aria-controls="pills-buy" aria-selected="false">Buy</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-sell-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-sell" type="button" role="tab"
-                                aria-controls="pills-sell" aria-selected="false">Sell</button>
-                        </li>
-                    </ul>
+                  
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-rent" role="tabpanel"
                             aria-labelledby="pills-rent-tab" tabindex="0">
 
                             <div class="filter">
-                                <form action="#">
+                                <form action="{{ route('properties') }}" method="GET">
                                     <div class="row gy-sm-4 gy-3">
-                                        <div class="col-lg-3 col-sm-6 col-xs-6">
-                                            <input type="text" class="common-input"
+                                        <div class="col-lg-6 col-sm-6 col-xs-6">
+                                            <input type="text" name="keyword" class="common-input"
                                                 placeholder="Enter Keyword">
                                         </div>
+                                       
                                         <div class="col-lg-3 col-sm-6 col-xs-6">
                                             <div class="select-has-icon icon-black">
-                                                <select class="select common-input">
-                                                    <option value="1" disabled>Property Type</option>
-                                                    <option value="1">Apartment</option>
-                                                    <option value="1">House</option>
-                                                    <option value="1">Land</option>
-                                                    <option value="1">Single Family</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-6 col-xs-6">
-                                            <div class="select-has-icon icon-black">
-                                                <select class="select common-input">
-                                                    <option value="1" disabled>Location</option>
-                                                    <option value="1">Bangladesh</option>
-                                                    <option value="1">Japan</option>
-                                                    <option value="1">Korea</option>
-                                                    <option value="1">Singapore</option>
-                                                    <option value="1">Germany</option>
-                                                    <option value="1">Thailand</option>
+
+                                                @php
+                                                $propertyTypes = App\Models\Property::all();
+                                                $types = array_unique($propertyTypes->pluck('type')->toArray());
+                
+                                            @endphp
+                                                <select class="select common-input" name="location">
+                                                    <option value="" disabled>Type</option>
+                                                    <option value="all">All</option>
+                                                    @foreach ($types as $type )
+                                                    <option value="{{ $type }}">{{ $type }}</option>
+                                                    @endforeach
+                                                   
+                                                    
+                                                     
                                                 </select>
                                             </div>
                                         </div>
@@ -260,7 +241,9 @@
                             <img src="{{ asset('storage/'.$property->thumbnail) }}"
                                 alt="" class="cover-img">
                         </a>
-                        <span class="property-item__badge">Sale</span>
+                        <span class="property-item__badge">
+                            <a href="{{route('booking', $property->id)}}" class="text-light">Book Now</a>
+                        </span>
                     </div>
                     <div class="property-item__content">
                         <h6 class="property-item__price">$ {{ $property->price}} <span class="day">/per day</span> </h6>
@@ -280,7 +263,7 @@
                                     <span class="text">{{ $property->bathroom}} Baths</span>
                                 </li>
                             </ul>
-                            <a href="#" class="simple-btn">Book Now <span class="icon-right"> <i
+                            <a href="{{route('booking', $property->id)}}" class="simple-btn">Book Now <span class="icon-right"> <i
                                         class="fas fa-arrow-right"></i> </span> </a>
                         </div>
                     </div>
@@ -291,7 +274,7 @@
             
         </div>
         <div class="text-center property__btn">
-            <a href="#" class="btn btn-main"> Sell All Listing <span class="icon-right"> <i
+            <a href="{{ route('properties')}}" class="btn btn-main"> Sell All Listing <span class="icon-right"> <i
                         class="fas fa-arrow-right"></i> </span> </a>
         </div>
     </div>
@@ -598,7 +581,7 @@
                                 <a href="#" class="blog-item__title-link border-effect">
                                     {{ $property->title}} </a>
                             </h6>
-                            <a href="#" class="simple-btn text-heading fw-semibold">Book Now
+                            <a href="{{ route('booking', $property->id)}}" class="simple-btn text-heading fw-semibold">Book Now
                                 <span class="icon-right text-gradient"> <i class="fas fa-plus"></i> </span>
                             </a>
                         </div>

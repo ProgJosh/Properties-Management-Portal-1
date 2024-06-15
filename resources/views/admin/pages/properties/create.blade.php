@@ -152,11 +152,9 @@
                             <label for="type">Type</label>
         
                             <select name="type" class="form-control" id="" >
-                                <option value="typeone">Type 1</option>
-                                <option value="typetwo">Type 2</option>
-                                <option value="typethree">Type 3</option>
-                                <option value="typefour">Type 4</option>
-                                <option value="typefive">Type 5</option>
+                                <option value="Apartment" {{ old('type') == 'Apartment' ? 'selected' : ''}} > Apartment</option>
+                                <option value="House" {{ old('type') == 'House' ? 'selected' : ''}}   > House</option>
+                                <option value="Land" {{ old('type') == 'Land' ? 'selected' : ''}} > Land</option>
         
                               
                             </select>

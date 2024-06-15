@@ -147,11 +147,9 @@
                             <label for="type">Type</label>
         
                             <select name="type" class="form-control" id="" >
-                                <option value="typeone" {{ $property->type == 'typeone' ? 'selected' : ''}}>Type 1</option>
-                                <option value="typetwo" {{ $property->type == 'typetwo' ? 'selected' : ''}}>Type 2</option>
-                                <option value="typethree" {{ $property->type == 'typethree' ? 'selected' : ''}}>Type 3</option>
-                                <option value="typefour" {{ $property->type == 'typefour' ? 'selected' : ''}}>Type 4</option>
-                                <option value="typefive" {{ $property->type == 'typefive' ? 'selected' : ''}}>Type 5</option>
+                                <option value="Apartment" {{ $property->type == 'Apartment' ? 'selected' : ''}}> Apartment</option>
+                                <option value="House" {{ $property->type == 'House' ? 'selected' : ''}}> House</option>
+                                <option value="Land" {{ $property->type == 'Land' ? 'selected' : ''}}> Land</option>
         
                               
                             </select>
