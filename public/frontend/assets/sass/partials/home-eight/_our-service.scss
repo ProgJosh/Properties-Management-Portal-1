@@ -1,0 +1,33 @@
+/* ========================== Our Service Start ============================= */
+.our-service-item {
+    background-color: var(--gray-100);
+    padding: 32px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    &:hover::before {
+        opacity: .3;
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        width: 50%;
+        height: 120%;
+        left: -36%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: .08;
+        background: var(--main-gradient);
+        border-radius: 50%;
+        transition: .2s linear;
+    }
+    &__icon {
+        width: 80px;
+        height: 80px;
+        background: var(--main-gradient);
+        border-radius: 50%;
+        display: inline-flex;
+      }
+  }
+/* ========================== Our Service End ============================= */

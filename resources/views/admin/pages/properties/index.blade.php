@@ -17,7 +17,7 @@
                             <th>Title</th>
                             <th>Address</th>
                             <th>Bedroom and Bathroom</th>
-                    
+                            <th>Image</th>
                             <th>Price</th>
                             
                             <th>Action</th>
@@ -32,7 +32,7 @@
                             <td> {{ $property->name }} </td>
                             <td> {{ $property->address }} </td>
                             <td> {{ $property->bedroom }} Bedromm - {{ $property->bathroom }} Bathroom </td>
-                          
+                            <td> <img src="{{ asset('storage/'.$property->thumbnail) }}" width="100px"></td>
                             <td> {{ $property->price }} </td>
                          
                             <td>

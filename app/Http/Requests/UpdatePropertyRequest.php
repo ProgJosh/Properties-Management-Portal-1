@@ -21,6 +21,7 @@ class UpdatePropertyRequest extends FormRequest
      */
     public function rules(): array
     {
+       
         return [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
@@ -35,6 +36,8 @@ class UpdatePropertyRequest extends FormRequest
             'type' => ['required', 'string', 'max:255'],
             'facility' => ['nullable'],
             'images' => ['nullable'],
+            'accommodation' => ['required', 'numeric', 'min:0'],
+            'pet_friendly' => ['nullable', 'numeric',],
         ];
     }
 }

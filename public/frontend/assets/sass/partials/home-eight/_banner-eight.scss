@@ -1,0 +1,21 @@
+.banner-overlay {
+    &__slider {
+        background-image: url("../images/thumbs/banner-eight.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+        z-index: 1;
+        padding: clampCal(80, 180) 0;
+        &::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            background: hsl(var(--black) / .65);
+        }
+    }
+}

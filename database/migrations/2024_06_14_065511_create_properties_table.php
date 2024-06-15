@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('bathroom');
             $table->tinyInteger('garage')->default(0)->comment('0 = no, 1 = yes');
             $table->string('floor');
+            $table->integer('accommodation');
+            $table->tinyInteger('pet_friendly')->default(0)->comment('0 = no, 1 = yes');
             $table->string('type');
             $table->string('thumbnail');
             $table->string('facility')->nullable();

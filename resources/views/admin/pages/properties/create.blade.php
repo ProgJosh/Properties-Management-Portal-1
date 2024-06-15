@@ -47,7 +47,14 @@
         
                         <div class="form-group mb-3">
                             <label for="location">Location</label>
-                            <input class="form-control" type="text" id="location" name="location" value="{{ old('location') }}" required="" placeholder="Enter property Location">
+                            
+                           
+                            <select name="location" class="form-control" id="">
+                                <option value="guagua" {{ old('location') == 'guagua' ? 'selected' : ''}}>Guagua</option>
+                                <option value="pampanga" {{ old('location') == 'pampanga' ? 'selected' : ''}}>pampanga</option>
+                                <option value="philippines" {{ old('location') == 'philippines' ? 'selected' : ''}}>philippines</option>
+                            </select>
+                           
                             @error('location')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -61,6 +68,15 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
+                        <div class="form-group mb-3">
+                            <label for="bathroom">Bathroom</label>
+                            <input class="form-control" type="number" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="" placeholder="Number of bathroom">
+                            @error('bathroom')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+        
 
                         <div class="form-group mb-3">
                             <label for="description">Description</label>
@@ -80,14 +96,7 @@
 
                     <div class="col-md-6">
 
-                        <div class="form-group mb-3">
-                            <label for="bathroom">Bathroom</label>
-                            <input class="form-control" type="number" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="" placeholder="Number of bathroom">
-                            @error('bathroom')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-        
+                       
                         <div class="form-group mb-3">
                             <label for="garage">Garage</label>
         
@@ -100,6 +109,31 @@
                             @error('garage')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
+                        </div>
+
+
+
+                        <div class="form-group mb-3">
+                            <label for="pet_friendly">Is Pet Friendly</label>
+        
+                            <select name="pet_friendly" class="form-control" id="" >
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+        
+        
+                            @error('pet_friendly')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="accommodation">Accommodation</label>
+        
+                            <input class="form-control" type="number" id="accommodation" name="accommodation" value="{{ old('accommodation') }}" required="" placeholder="Enter property Accommodation">
+                            @error('accommodation')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror   
                         </div>
         
         

@@ -46,7 +46,11 @@
         
                         <div class="form-group mb-3">
                             <label for="location">Location</label>
-                            <input class="form-control" type="text" id="location" name="location" value="{{  $property->location }}" required="" placeholder="Enter property Location">
+                            <select name="location" class="form-control" id="">
+                                <option value="guagua" {{$property->location == 'guagua' ? 'selected' : ''}}>Guagua</option>
+                                <option value="pampanga" {{ $property->location == 'pampanga' ? 'selected' : ''}}>pampanga</option>
+                                <option value="philippines" {{ $property->location == 'philippines' ? 'selected' : ''}}>philippines</option>
+                            </select>
                             @error('location')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -57,6 +61,14 @@
                             <label for="bedroom">Bedroom</label>
                             <input class="form-control" type="number" id="bedroom" name="bedroom" value="{{  $property->bedroom }}" required="" placeholder="Number of bedroom">
                             @error('bedroom')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="bathroom">Bathroom</label>
+                            <input class="form-control" type="number" id="bathroom" name="bathroom" value="{{  $property->bathroom }}" required="" placeholder="Number of bathroom">
+                            @error('bathroom')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -80,13 +92,7 @@
 
                     <div class="col-md-6">
 
-                        <div class="form-group mb-3">
-                            <label for="bathroom">Bathroom</label>
-                            <input class="form-control" type="number" id="bathroom" name="bathroom" value="{{  $property->bathroom }}" required="" placeholder="Number of bathroom">
-                            @error('bathroom')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                     
         
                         <div class="form-group mb-3">
                             <label for="garage">Garage</label>
@@ -100,6 +106,29 @@
                             @error('garage')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="pet_friendly">Is Pet Friendly</label>
+        
+                            <select name="pet_friendly" class="form-control" id="" >
+                                <option value="1" {{ $property->pet_friendly == 1 ? 'selected' : ''}}>Yes</option>
+                                <option value="0" {{ $property->pet_friendly == 0 ? 'selected' : ''}}>No</option>
+                            </select>
+        
+        
+                            @error('pet_friendly')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="accommodation">Accommodation</label>
+        
+                            <input class="form-control" type="number" id="accommodation" name="accommodation" value="{{  $property->accommodation }}" required="" placeholder="Enter property Accommodation">
+                            @error('accommodation')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror   
                         </div>
         
         

@@ -38,7 +38,8 @@ class PropertiesController extends Controller
         $data = $request->validated();
     
         //process image
-        $data['thumbnail'] = $request->file('thumbnail')->store('properties');
+        $tmpimgpath = $request->file('thumbnail')->store('public/properties');
+        $data['thumbnail'] = str_replace('public/', '', $tmpimgpath);
         
         $data['landlord_id'] = auth()->user()->id;
     
@@ -53,7 +54,7 @@ class PropertiesController extends Controller
             foreach($images as $image){
                 $imgdata = [
                     'property_id' => $property->id,
-                    'image' => $image->store('gallery')
+                    'image' => str_replace('public/', '', $image->store('public/properties')),
                 ];
                 PropertyGallery::create($imgdata);
             }
@@ -76,8 +77,10 @@ class PropertiesController extends Controller
     }
 
     public function update(UpdatePropertyRequest $request, $id) {
+       
         $data = $request->validated();
     
+        
         $property = Property::find($id);
     
         if (!$property) {
@@ -86,7 +89,8 @@ class PropertiesController extends Controller
         }
     
         if ($request->hasFile('thumbnail')) {
-            $data['thumbnail'] = $request->file('thumbnail')->store('properties');
+            $imgpath = $request->file('thumbnail')->store('public/properties');
+            $data['thumbnail'] = str_replace('public/', '', $imgpath);
         }
         unset($data['images']);
     
@@ -103,7 +107,8 @@ class PropertiesController extends Controller
                 foreach ($images as $image) {
                     $imgdata = [
                         'property_id' => $property->id,
-                        'image' => $image->store('gallery')
+
+                        'image' => str_replace('public/', '', $image->store('public/gallery'))
                     ];
                     PropertyGallery::create($imgdata);
                 }

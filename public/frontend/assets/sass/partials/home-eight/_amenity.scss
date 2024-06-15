@@ -1,0 +1,45 @@
+/* ================================= Amenity Section Start ============================= */
+.amenity-item-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.amenity-item {
+    background-color: var(--gray-100);
+    padding: 32px;
+    border-radius: 8px;
+    border: 1px solid hsl(var(--black)/.1);
+    position: relative;
+    text-align: center;
+    transition: .2s linear;
+    &:hover {
+        background-color: hsl(var(--main));
+        .amenity-item {
+            &__icon {
+                background-color: hsl(var(--white));
+            }
+            &__title {
+                color: hsl(var(--white));
+            }
+        }
+    }
+    &__title {
+        font-size: 14px;
+        text-transform: capitalize;
+        transition: .2s linear;
+    }
+    &__icon {
+        font-size: 28px;
+        width: 70px;
+        height: 70px;
+        background-color: hsl(var(--main)/.1);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        text-align: center;
+        transition: .2s linear;
+    }
+}
+/* ================================= Amenity Section End ============================= */

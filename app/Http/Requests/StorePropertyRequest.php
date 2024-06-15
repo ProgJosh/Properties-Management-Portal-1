@@ -35,6 +35,8 @@ class StorePropertyRequest extends FormRequest
             'type' => ['required', 'string', 'max:255'],
             'facility' => ['nullable'],
             'images' => ['nullable'],
+            'accommodation' => ['required', 'numeric', 'min:0'],
+            'pet_friendly' => ['nullable', 'numeric',],
         ];
     }
 }

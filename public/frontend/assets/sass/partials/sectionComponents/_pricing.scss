@@ -1,0 +1,116 @@
+/* ============================ Pricing Plan Css Start ================================ */
+.pricing-item {
+    border-radius: 16px;
+    background-color: #F5F7F9;
+    padding: 32px 24px;
+    background-color: hsl(var(--white));
+    box-shadow: var(--box-shadow);
+    transition: 0.2s linear;
+    height: 100%;
+}
+
+.pricing-item__top {
+    padding-bottom: clamp(1rem, -0.217rem + 2.536vw, 2rem);
+    margin-bottom: clamp(1rem, -0.217rem + 2.536vw, 2rem);
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.pricing-item__top::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 48px);
+    height: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: 0.2s linear;
+}
+
+.pricing-item__icon {
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-color: hsl(var(--white));
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 28px;
+    @include sm-screen {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+    }
+}
+
+
+.pricing-item__title {
+    transition: 0.2s linear;
+    @include lg-screen {
+        font-size: 20px;
+    }
+    @include sm-screen {
+        font-size: 16px;
+    }
+}
+
+.pricing-item__price {
+    transition: 0.2s linear;
+}
+
+.pricing-item__desc {
+    margin-bottom: clamp(1.5rem, 0.283rem + 2.536vw, 2.5rem);
+    transition: 0.2s linear;
+}
+
+.pricing-item__lists {
+    margin-top: clamp(1.5rem, 0.283rem + 2.536vw, 2.5rem);
+}
+
+.text-list__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    transition: 0.2s linear;
+}
+
+.text-list__item:last-child {
+    margin-bottom: 0;
+}
+
+.text-list__item .icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    background: var(--main-gradient);
+    color: #fff;
+}
+
+.popular-badge {
+    background-color: hsl(var(--main-two));
+    color: hsl(var(--heading-color));
+    padding: 3px 16px;
+    padding-left: 28px;
+    position: relative;
+    right: -24px;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 8% 52%);
+    font-size: 18px;
+}
+
+@media screen and (max-width: 767px) {
+    .popular-badge {
+        font-size: 13px;
+    }
+}
+/* ============================ Pricing Plan Css End ================================ */

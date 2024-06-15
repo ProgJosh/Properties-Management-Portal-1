@@ -3,11 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PropertiesController;
+use App\Http\Controllers\Admin\LandlordsController;
+use App\Http\Controllers\Admin\TenantController;
+use App\Http\Controllers\Frontend\HomeController; 
 
 require_once __DIR__.'/jetstream.php';
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
+Route::get('/property/{id}', [HomeController::class, 'property'])->name('property');
+
+Route::get('properties/{type}', [HomeController::class, 'propertyByType'])->name('propertyByType');
+
+
 
 Route::middleware([
     'auth:sanctum',
@@ -45,4 +53,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/property/update/{id}', [PropertiesController::class, 'update'])->name('property.update')->middleware(['auth:admin']);
     Route::get('/property/delete/{id}', [PropertiesController::class, 'delete'])->name('property.delete')->middleware(['auth:admin']);
 
+    //Users
+
+    Route::get('/landlords', [LandlordsController::class, 'landlords'])->name('landlords')->middleware(['auth:admin']);
+    Route::get('/landlord/{id}', [LandlordsController::class, 'SingleLandlordProperties'])->name('single.landlord')->middleware(['auth:admin']);
+
+    Route::get('/tenants', [TenantController::class, 'tenants'])->name('tenants')->middleware(['auth:admin']);
 });
