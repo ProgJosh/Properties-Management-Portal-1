@@ -5,8 +5,10 @@ use  App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PropertiesController;
 use App\Http\Controllers\Admin\LandlordsController;
 use App\Http\Controllers\Admin\TenantController;
+use App\Http\Controllers\Admin\BookedController;
 use App\Http\Controllers\Frontend\HomeController; 
 use App\Http\Controllers\Frontend\BookingController;
+use App\Http\Controllers\Frontend\UserDashboardController;
 
 require_once __DIR__.'/jetstream.php';
 
@@ -17,16 +19,19 @@ Route::get('/property/{id}', [HomeController::class, 'property'])->name('propert
 Route::get('properties/{type}', [HomeController::class, 'propertyByType'])->name('propertyByType');
 Route::get('booking/{id}', [BookingController::class, 'index'])->name('booking')->middleware('auth');
 
+Route::post('/checkout', [BookingController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::get('/thankyou', [BookingController::class, 'thankyou'])->name('thankyou');
+
+Route::post('user/profile/update', [UserDashboardController::class, 'updateProfile'])->name('user.profile.update')->middleware('auth');
+Route::post('user/password/update', [UserDashboardController::class, 'updatePassword'])->name('user.password.update')->middleware('auth');
+Route::get('user/logout', [UserDashboardController::class, 'logout'])->name('user.logout');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        // return view('admin.pages.dashboard');
-       return view('dashboard');
-       
-    })->name('dashboard');
+
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 });
 
 
@@ -52,11 +57,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/property/edit/{id}', [PropertiesController::class, 'edit'])->name('property.edit')->middleware(['auth:admin']);
     Route::post('/property/update/{id}', [PropertiesController::class, 'update'])->name('property.update')->middleware(['auth:admin']);
     Route::get('/property/delete/{id}', [PropertiesController::class, 'delete'])->name('property.delete')->middleware(['auth:admin']);
-
+    Route::get('/property/{id}', [PropertiesController::class, 'show'])->name('property.show')->middleware(['auth:admin']);
+    Route::post('/property/status', [PropertiesController::class, 'ajaxStatusUpdate'])->name('property.status');
     //Users
 
     Route::get('/landlords', [LandlordsController::class, 'landlords'])->name('landlords')->middleware(['auth:admin']);
     Route::get('/landlord/{id}', [LandlordsController::class, 'SingleLandlordProperties'])->name('single.landlord')->middleware(['auth:admin']);
 
     Route::get('/tenants', [TenantController::class, 'tenants'])->name('tenants')->middleware(['auth:admin']);
+
+
+
+    //Booking Routes
+
+    Route::get('/booked', [BookedController::class, 'booked'])->name('booked')->middleware(['auth:admin']);
+    route::get('booked/{id}', [BookedController::class, 'show'])->name('booked.show')->middleware(['auth:admin']);
+
 });

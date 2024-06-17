@@ -4,7 +4,7 @@
             <!-- Logo Start -->
             <div class="logo">
                 <a href="{{ url('/') }}" class="link">
-                    <img src="{{ asset('frontend/assets/images/logo/logo.png') }}" alt="Logo">
+                    <img src="{{ asset('frontend/assets/images/logo/logo-1.jpeg') }}" alt="Logo" width="100">
                 </a>
             </div>
             <!-- Logo End  -->
@@ -46,13 +46,10 @@
 
                             <ul class="nav-submenu">
                                 <li class="nav-submenu__item">
-                                    <a href="" class="nav-submenu__link"> Profile </a>
+                                    <a href="{{route('dashboard')}}" class="nav-submenu__link"> Profile </a>
                                 </li>
                                 <li class="nav-submenu__item ">
-                                    <form action="{{route('logout')}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="nav-submenu__link text-start mx-2">Logout</button>
-                                    </form>
+                                    <a href="{{route('user.logout')}}" class="nav-submenu__link">Logout</a>
                              
                                 </li>
                             </ul>

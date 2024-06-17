@@ -442,7 +442,7 @@
     <div class="portfolio-wrapper">
         
         @php
-            $portfolios = App\Models\Property::latest()->skip(6)->take(5)->get();
+            $portfolios = App\Models\Property::latest()->where('status', 1)->skip(6)->take(5)->get();
         @endphp
         
         @foreach ($portfolios as $portfolio)
@@ -553,7 +553,7 @@
         <div class="row gy-4">
 
             @php
-            $newProperties = \App\Models\Property::oldest()->take(3)->get();
+            $newProperties = \App\Models\Property::oldest()->where('status', 1)->take(3)->get();
             @endphp
 
             @foreach ($newProperties as  $property)

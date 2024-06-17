@@ -6,16 +6,16 @@
  
     <!-- ==================== Breadcrumb Start Here ==================== -->
     <section class="breadcrumb padding-y-120">
-        <img src="assets/images/thumbs/breadcrumb-img.png" alt="" class="breadcrumb__img">
+        <img src="{{asset('frontend/assets/images/thumbs/breadcrumb-img.png')}}" alt="" class="breadcrumb__img">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="breadcrumb__wrapper">
-                        <h2 class="breadcrumb__title"> Checkout</h2>
+                        <h2 class="breadcrumb__title"> Booking </h2>
                         <ul class="breadcrumb__list">
-                            <li class="breadcrumb__item"><a href="index.html" class="breadcrumb__link"> <i class="las la-home"></i> Home</a> </li>
+                            <li class="breadcrumb__item"><a href="{{ url('/') }}" class="breadcrumb__link"> <i class="las la-home"></i> Home</a> </li>
                             <li class="breadcrumb__item"><i class="fas fa-angle-right"></i></li>
-                            <li class="breadcrumb__item"> <span class="breadcrumb__item-text"> Checkout </span> </li>
+                            <li class="breadcrumb__item"> <span class="breadcrumb__item-text"> Booking </span> </li>
                         </ul>
                     </div>
                 </div>
@@ -27,62 +27,166 @@
         <!-- ===================== Checkout Section Start ============================ -->
     <section class="checkout padding-y-120">
         <div class="container container-two">
-            <form action="#">
+            <form action="{{route('checkout')}}" method="POST">
+                @csrf
                 <div class="row gy-4">
                     <div class="col-lg-8 pe-lg-5">
                         <div class="card common-card">
                             <div class="card-body">
                                 <h6 class="title mb-4">Shipping Address</h6>
+                                <input type="hidden" name="property_id" value="{{ $property->id }}">
                                 <div class="row gy-4">
                                     <div class="col-sm-6 col-xs-6">
-                                        <label for="FirstName" class="form-label">First Name</label>
-                                        <input type="text" class="common-input" id="FirstName" placeholder="First Name">
+                                        <label for="fname" class="form-label">First Name</label>
+                                        <input type="text" class="common-input" name="fname" id="fname" required placeholder="First Name">
+
+
+                                        @error('fname')
+                                            <span class="text-danger">{{$message}}</span>   
+                                        @enderror
+
+
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
-                                        <label for="LastName" class="form-label">Last Name</label>
-                                        <input type="text" class="common-input" id="LastName" placeholder="Last Name">
+                                        <label for="lname" class="form-label">Last Name</label>
+                                        <input type="text" class="common-input" name="lname" id="lname" required  placeholder="Last Name">
+
+
+                                       @error('lname')
+                                            <span class="text-danger">{{$message}}</span>
+                                       @enderror     
+
+
                                     </div>
+
+
+                                    <div class="col-sm-6 col-xs-6">
+                                        <label for="checkin" class="form-label">Check in</label>
+                                        <input type="date" class="common-input" min="{{ date('Y-m-d') }}" name="checkin" id="checkin" required>
+
+                                        @error('checkin')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+
+
+                                
+
+
+                                    <div class="col-sm-6 col-xs-6">
+                                        <label for="checkout" class="form-label">Check out</label>
+                                        <input type="date" class="common-input" name="checkout" id="checkout" min="{{ date('Y-m-d') }}" required> 
+
+                                        @error('checkout')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-sm-6 col-xs-6">
+                                        <label for="adults" class="form-label">Adults</label>
+                                        <input type="number" min="0" class="common-input" name="adults" id="adults" placeholder="Adults" required>
+
+                                        @error('adults')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-sm-6 col-xs-6">
+                                        <label for="kids" class="form-label">Kids</label>
+                                        <input type="number" class="common-input" name="kids" id="kids" min="0" placeholder="Kids">
+
+                                        @error('kids')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+
+
                                     <div class="col-sm-6 col-xs-6">
                                         <label for="EmailAddress" class="form-label">Email Address</label>
-                                        <input type="email" class="common-input" id="EmailAddress" placeholder="Email Address">
+                                        <input type="email" class="common-input" name="email" id="EmailAddress" placeholder="Email Address" required>
+
+
+                                        @error('email')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+
+
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
                                         <label for="PhoneNumber" class="form-label">Phone Number</label>
-                                        <input type="tel" class="common-input" id="PhoneNumber" placeholder="Phone Number">
+                                        <input type="tel" class="common-input" name="phone" id="PhoneNumber" placeholder="Phone Number" >
+
+
+                                        @error('phone')
+                                            <span class="text-danger">{{$message}}</span>
+
+
+                                        @enderror
+
+
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
                                         <label for="Address" class="form-label">Address</label>
-                                        <input type="text" class="common-input" id="Address" placeholder="Address">
+                                        <input type="text" class="common-input" name="address" id="Address" placeholder="Address" required>
+
+
+                                        @error('address')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
                                         <label for="Country" class="form-label">Country</label>
                                         <div class="select-has-icon icon-black">
-                                            <select class="select common-input" id="Country">
+                                            <select class="select common-input" name="country" id="Country" required>
                                                 <option value="1" disabled> Country</option>
-                                                <option value="1">Australia</option>
-                                                <option value="1">Canada</option>
-                                                <option value="1">Europe</option>
-                                                <option value="1">Bangladesh</option>
-                                                <option value="1">India</option>
-                                                <option value="1">Pakistan</option>
+                                                <option value="Australia">Australia</option>
+                                                <option value="Canada">Canada</option>
+                                                <option value="Europe">Europe</option>
+                                                <option value="Bangladesh">Bangladesh</option>
+                                                <option value="India">India</option>
+                                                <option value="Pakistan">Pakistan</option>
                                             </select>
                                         </div>
+
+
+                                        @error('country')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
-                                        <label for="City" class="form-label">City</label>
-                                        <input type="text" class="common-input" id="City" placeholder="City">
+                                        <label for="city" class="form-label">City</label>
+                                        <input type="text" class="common-input" name="city" id="city" placeholder="city" required>
+
+
+                                        @error('city')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
+
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
                                         <label for="State" class="form-label">State</label>
-                                        <input type="text" class="common-input" id="State" placeholder="State">
+                                        <input type="text" class="common-input" name="state" id="State" placeholder="State" required>
+                                        @error('state')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
-                                        <label for="Region" class="form-label">Region</label>
-                                        <input type="text" class="common-input" id="Region" placeholder="Region">
+                                        <label for="region" class="form-label">Region</label>
+                                        <input type="text" class="common-input" name="region" id="region" placeholder="Region" required>
+
+                                        @error('region')
+                                            <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="col-sm-6 col-xs-6">
-                                        <label for="ZipCode" class="form-label">ZipCode</label>
-                                        <input type="text" class="common-input" id="ZipCode" placeholder="ZipCode">
+                                        <label for="zip_code" class="form-label">ZipCode</label>
+                                        <input type="text" class="common-input"  name="zip_code" id="zip_code" placeholder="ZipCode" required>
+
+                                        @error('zip_code')
+                                            <span class="text-danger">{{$message}}</span>
+                                            
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -93,21 +197,23 @@
                             <div class="card-body">
                                 <h6 class="title mb-4">Payment Method</h6>
                                 <div class="d-flex flex-column gap-3">
-                                    <div class="payment-method">
+                                    {{-- <div class="payment-method">
                                         <div class="common-radio">
-                                            <input class="form-check-input" type="radio" name="payment" id="DebitCard">
+                                            <input class="form-check-input" type="radio" name="payment_method" id="DebitCard">
                                             <label class="form-check-label" for="DebitCard">
                                                 Debit card / Credit card
-                                                <img src="assets/images/thumbs/paypal.png" alt="">
+                                                
+                                                <img src="{{asset('frontend/assets/images/thumbs/paypal.png')}}" alt="">
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="payment-method">
                                         <div class="common-radio">
-                                            <input class="form-check-input" type="radio" name="payment" id="payPal">
+                                            <input class="form-check-input" type="radio" name="payment_method" value="Stripe" id="payPal">
                                             <label class="form-check-label" for="payPal">
-                                                Paypal
-                                                <img src="assets/images/thumbs/visa.png" alt="">
+                                                Stripe
+                                                <img src="{{asset('frontend/assets/images/thumbs/visa.png')}}" alt="">
+                                                
                                             </label>
                                         </div>
                                     </div>
@@ -116,31 +222,17 @@
                         </div>
                         <div class="card common-card">
                             <div class="card-body">
-                                <h6 class="title mb-4">Cart Totals</h6>
+                                <h6 class="title mb-4">Totals</h6>
                                 <ul class="billing-list">
                                     <li class="billing-list__item flx-between">
-                                        <span class="text text-poppins font-15">3 Rooms Manhattan × 2</span>
-                                        <span class="amount fw-semibold text-heading text-poppins">$321.95</span>
+                                        <input type="hidden" name="amount" value="{{ $property->price }}">
+                                        <span class="text text-poppins font-15"> {{ substr($property->name, 0, 20) }} </span>
+                                        <span class="amount fw-semibold text-heading text-poppins">${{ $property->price}} </span>
                                     </li>
-                                    <li class="billing-list__item flx-between">
-                                        <span class="text text-poppins font-15">OE Replica Wheels × 2</span>
-                                        <span class="amount fw-semibold text-heading text-poppins"> $185.00 </span>
-                                    </li>
-                                    <li class="billing-list__item flx-between">
-                                        <span class="text text-poppins font-15">Wheel Bearing Retainer × 2</span>
-                                        <span class="amount fw-semibold text-heading text-poppins"> $130.00</span>
-                                    </li>
-                                    <li class="billing-list__item flx-between">
-                                        <span class="text text-poppins font-15">Shipping and Handing</span>
-                                        <span class="amount fw-semibold text-heading text-poppins"> $15.00</span>
-                                    </li>
-                                    <li class="billing-list__item flx-between">
-                                        <span class="text text-poppins font-15">Vat</span>
-                                        <span class="amount fw-semibold text-heading text-poppins"> $10.00</span>
-                                    </li>
+                                    
                                     <li class="billing-list__item flx-between">
                                         <span class="text text-poppins fw-semibold text-heading">Order Total</span>
-                                        <span class="amount fw-semibold text-heading text-poppins"> $661.95</span>
+                                        <span class="amount fw-semibold text-heading text-poppins"> ${{$property->price}}</span>
                                     </li>
                                 </ul>
                                 <button type="submit" class="btn btn-main w-100 mt-4">Pay Now</button>

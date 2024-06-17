@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -61,5 +62,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function booking(){
+        return $this->hasMany(Booking::class);
+    }
+
+    public function payment(){
+        return $this->hasMany(Payment::class);
+    }
+
+    public function userDetails(){
+        return $this->hasOne(UserDetail::class);
     }
 }

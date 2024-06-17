@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery-ui.css') }}">
     <!-- Main css -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css') }}">
-
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     @stack('css')
 
 </head>
@@ -274,6 +274,10 @@
 
     <!-- main js -->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
+
 
     @stack('js')
 

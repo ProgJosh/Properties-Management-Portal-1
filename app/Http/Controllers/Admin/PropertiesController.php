@@ -19,7 +19,7 @@ class PropertiesController extends Controller
     {
         if(Auth::guard('admin')->user()->role == '0'){
 
-            $properties = Property::all()->latest()->paginate(20);
+            $properties = Property::latest()->paginate(20);
            }else{
     
             $properties = Property::where('landlord_id', Auth::guard('admin')->user()->id)->latest()->paginate(20);
@@ -132,5 +132,22 @@ class PropertiesController extends Controller
         return redirect()->route('admin.properties');
     }
     
+
+    public function show($id){
+        $property = Property::find($id);
+        if(!$property){
+            Toastr::error('Property not found');
+            return redirect()->route('admin.properties');
+        }
+        return view('admin.pages.properties.show', compact('property'));
+    }
+
+    public function ajaxStatusUpdate(Request $request){
+        $property = Property::find($request->id);
+        $property->status = $request->status;
+        $property->save();
+        return response()->json(['status' => 'success', 'message' => 'Property status updated successfully']);
+         
+    }
     
 }

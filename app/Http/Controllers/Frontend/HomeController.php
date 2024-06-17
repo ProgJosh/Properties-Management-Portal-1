@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\Booking;
+use Brian2694\Toastr\Facades\Toastr;
+
 
 class HomeController extends Controller
 {
     public function index()
     {
 
-        $properties = Property::latest()->take(6)->get();
+        $properties = Property::latest()->where('status', 1)->take(6)->get();
 
         return view('frontend.pages.home', compact('properties'));
     }
@@ -27,12 +30,18 @@ class HomeController extends Controller
         ]);
     
         // Start the query
-        $query = Property::query();
+        $query = Property::query()->where('status', 1);
+
+       
+
+        // Apply filters if they already booked for checkin date
+     
     
         // Apply location filter if it exists
         if (request()->has('location') && request('location') !== 'all') {
             $location = request('location');
             $query->whereRaw('location REGEXP ?', [$location]);
+
         }
 
         if(request()->has('keyword') && !empty(request('keyword'))){
@@ -49,10 +58,29 @@ class HomeController extends Controller
         if (request()->has('accommodation')) {
             $query->where('accommodation', '>', request('accommodation'));
         }
+
+
+        if (request()->has('checkin') && request()->has('checkout')) {
+    
+            $checkin = request('checkin');
+            $checkout = request('checkout');
+            
+            // Ensure checkin and checkout are valid dates
+            if (strtotime($checkin) && strtotime($checkout)) {
+                $bookedForDate = Booking::whereBetween('checkin', [$checkin, $checkout])
+                    ->orWhereBetween('checkout', [$checkin, $checkout])
+                    ->pluck('property_id')
+                    ->toArray();
+        
+                
+        
+                $query->whereNotIn('id', $bookedForDate);
+            } 
+        }
     
         // Paginate the results
         $properties = $query->latest()->paginate(10); // Adjust the number as needed
-    
+       
         // Return the view with the properties
         return view('frontend.pages.properties', compact('properties'));
     }
@@ -62,6 +90,12 @@ class HomeController extends Controller
     public function property($id)
     {
         $property = Property::find($id);
+
+        if($property->status == 0){
+            Toastr::error('Property Not Available');
+            return redirect()->back();
+        }
+
         return view('frontend.pages.property-details', compact('property'));
     }
 
@@ -72,7 +106,7 @@ class HomeController extends Controller
         $type = htmlspecialchars($type);
     
         // Retrieve properties of the given type with pagination
-        $properties = Property::where('type', $type)->paginate(12);
+        $properties = Property::where('type', $type)->where('status', 1)->paginate(12);
     
         // Pass the properties and type to the view
         return view('frontend.pages.properties', compact('properties', 'type'));

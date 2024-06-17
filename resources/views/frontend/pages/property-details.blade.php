@@ -247,7 +247,10 @@
                 <div class="col-lg-4">
                     <div class="common-sidebar-wrapper">
                         <div class="common-sidebar">
-                            <h6 class="common-sidebar__title"> Category </h6>
+                            <h6 class="common-sidebar__title mb-1"> Contact with landload</h6>
+                            <a href="https://wa.me/{{ $property->landlord->phone }}" target="_blank" class="font-36 text-decoration-none"><i class="fab fa-whatsapp-square"></i> </a>
+
+                            <h6 class="common-sidebar__title mt-3"> Property Types </h6>
                             <ul class="category-list">
 
 

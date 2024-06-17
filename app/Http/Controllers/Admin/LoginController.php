@@ -11,8 +11,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Booking;
+use App\Models\Payment;
 
 use App\Models\Property;
+
+
 
 class LoginController extends Controller
 {
@@ -73,7 +77,35 @@ class LoginController extends Controller
 
     public function dashboard(){
 
+        if(Auth::user()->role == '0'){
+            $tatalProperty = Property::count();
+            $totalBooked = Booking::count();
+            $totalAmount = Payment::sum('amount');
+            $revenue = $totalAmount * 0.10;
+            
+        }else{
+            $lanlordid = Auth::user()->id;
+    
+            $properyByLanlord = Property::where('landlord_id', $lanlordid)->get();
+
+
+            $tatalProperty = $properyByLanlord->count();
+            $totalBooked = Booking::query()
+                        ->whereIn('property_id', $properyByLanlord->pluck('id'))
+                        ->count(); 
+
+
+
+        $totalAmount = Payment::query()
+                    ->whereIn('booking_id', $properyByLanlord->pluck('id'))
+                    ->sum('amount');
+
+        $revenue = $totalAmount - ($totalAmount * 0.10);
+        };
+
+        
      
-        return view('admin.pages.dashboard');
+
+        return view('admin.pages.dashboard', compact('tatalProperty', 'totalBooked', 'totalAmount', 'revenue'));
     }
 }

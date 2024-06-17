@@ -26,4 +26,10 @@ class Property extends Model
     {
         return $this->hasMany(PropertyGallery::class, 'property_id');
     }
+
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'property_id');
+    }
 }
