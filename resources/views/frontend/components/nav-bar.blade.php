@@ -4,7 +4,7 @@
             <!-- Logo Start -->
             <div class="logo">
                 <a href="{{ url('/') }}" class="link">
-                    <img src="{{ asset('frontend/assets/images/logo/logo-1.jpeg') }}" alt="Logo" width="100">
+                    <img src="{{ asset('frontend/assets/images/logo/logo.jpg') }}" alt="Logo" width="100">
                 </a>
             </div>
             <!-- Logo End  -->
@@ -28,7 +28,7 @@
                        
                    @else
                    <li class="nav-menu__item ">
-                    <a href="{{route('admin.login')}}" target="_blank" class="nav-menu__link">Landlor Login</a>
+                    <a href="{{route('admin.login')}}" target="_blank" class="nav-menu__link">Landlord Login</a>
                      
                 </li>
                    @endif

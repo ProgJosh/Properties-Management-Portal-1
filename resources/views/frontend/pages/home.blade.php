@@ -10,11 +10,11 @@
                 <div class="col-lg-6">
                     <div class="banner-inner position-relative">
                         <div class="banner-content">
-                            <span class="banner-content__subtitle text-uppercase font-14">FinTech Fusion</span>
-                            <h1 class="banner-content__title">Invest today in You <span
-                                    class="text-gradient">Dream Home</span> </h1>
-                            <p class="banner-content__desc font-18">Unlock the Power of Real Estate Making Your
-                                Real Estate Dreams a Reality Real Estate here Unlock the Power of Real Estate
+                            <span class="banner-content__subtitle text-uppercase font-14">HOME AWAITS!</span>
+                            <h1 class="banner-content__title">Find Your Apartment In<span
+                                    class="text-gradient">Guagua, Pampanga</span> </h1>
+                            <p class="banner-content__desc font-18">Discover Trusted Rentals in Guagua, Pampanga, Making
+                            your Apartment Search Effortless
                             </p>
                         </div>
                     </div>
