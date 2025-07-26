@@ -73,7 +73,7 @@
                    
 
                     <li class="nav-menu__item ">
-                        <a href="{{route('contact')}}" class="nav-menu__link">Contact</a>
+                        <a href="/contact">Contact</a>
                       
                     </li>
 

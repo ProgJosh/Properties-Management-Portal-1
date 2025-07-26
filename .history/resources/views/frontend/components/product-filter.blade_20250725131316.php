@@ -88,10 +88,7 @@
                     
                     <select class="form-select common-input common-input--withLeftIcon pill text-gray-800" name="type">
                         <option value="Type" disabled selected>Type</option>
-                        <option value="apartment">Apartment</option>
-                        <option value="boarding ">Boarding </option>
-                        <option value="house">House</option>
-                        <option value="dormitory">Dormitory</option>
+                        <option value="all">All</option>
                         @foreach ($types as $type)
                             <option value="{{ $type }}">{{ $type }}</option>
                         @endforeach

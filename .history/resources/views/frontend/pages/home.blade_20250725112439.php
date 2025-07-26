@@ -11,12 +11,13 @@
                     <div class="banner-inner position-relative">
                         <div class="banner-content">
                             <span class="banner-content__subtitle text-uppercase font-14">HOME AWAITS!</span>
-                            <h1 class="banner-content__title">Find Your Apartment In<span
+                            <h1 class="banner-content__title">Find Your Apartment In <span
                                     class="text-gradient">Guagua, Pampanga</span> </h1>
                             <p class="banner-content__desc font-18">Discover Trusted Rentals in Guagua, Pampanga, 
                                 Making Your Apartment Search Effortless
                             </p>
                         </div>
+                        <!-- End of Filter Form Section -->
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-0 order-1">
@@ -76,7 +77,7 @@
                             </div>
 
                         </div>
-</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -206,7 +207,7 @@
         <div class="section-heading">
             <span class="section-heading__subtitle bg-gray-100"> <span
                     class="text-gradient fw-semibold">Apartment Type</span> </span>
-            <h2 class="section-heading__title">Let us find the perfect apartment for you</h2>
+            <h2 class="section-heading__title">Let us find the perfect the apartment for you</h2>
         </div>
         <div class="row gy-4">
             <div class="col-lg-4 col-sm-6 col-xs-6">
@@ -218,7 +219,7 @@
                     <h6 class="property-type-item__title"> Explore Listings </h6>
                     <p class="property-type-item__desc font-18">Start by browsing our large database of apartments. Use our advanced search
                         filters to narrow down your options based on location, price, amenities, and more. Each listing includes detailed descriptions,
-                    high-quality photos to help you find the apartment that meets your needs. </p>
+                    high-quality photos to help you find the apartment that meets your needs.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-xs-6">
@@ -347,7 +348,7 @@
                 <h2 class="section-heading__title">Optimum Apartments for you</h2>
             </div>
             <p class="section-heading__desc">Discover a diverse selection of meticulously curated apartments designed to enhance 
-                your lifestyle, whether you're seeking modern amenities, spacious, layouts, or convenient locations. </p>
+                your lifestyle, whether you're seeking modern amenities, spacious, layouts, or convenient locations.</p>
         </div>
         <div class="testimonial__inner">
             <div class="row">
@@ -364,7 +365,7 @@
                             </div>
                             <p class="testimonial-item__desc">Finding an apartment in Guagua was effortless with
                                 this portal. I highly recommend it to anyone searching for quality rentals in Guagua.
-                                </p>
+                                an essential most a education the a man who can do tant clearly</p>
                             <ul class="star-rating flx-align justify-content-end">
                                 <li class="star-rating__item"><i class="fas fa-star"></i></li>
                                 <li class="star-rating__item"><i class="fas fa-star"></i></li>
@@ -456,10 +457,10 @@
                             </ul>
                         </div>
                     </div>
-                </div>         
+                </div>
                 <div class="col-lg-6">
                     <div class="testimonial-thumb">
-                        <img src="{{ asset('frontend/assets/images/thumbs/guaguadump.png') }}"
+                        <img src="{{ asset('frontend/assets/images/thumbs/testimonial-img.png') }}"
                             alt="" class="cover-img">
                     </div>
                 </div>
@@ -474,8 +475,8 @@
         <div class="section-heading style-left style-flex flx-between align-items-end gap-3">
             <div class="section-heading__inner">
                 <span class="section-heading__subtitle"> <span class="text-gradient fw-semibold">Latest
-                        Apartment</span> </span>
-                <h2 class="section-heading__title">The Perfect Apartment for you</h2>
+                        Product</span> </span>
+                <h2 class="section-heading__title">Prestige Propert Management property for you</h2>
             </div>
             <a href="{{ route('properties')}}" class="btn btn-outline-main">View More <span class="icon-right"> <i
                         class="fas fa-plus"></i> </span> </a>
@@ -511,7 +512,7 @@
                                 <a href="#" class="blog-item__title-link border-effect">
                                     {{ $property->title}} </a>
                             </h6>
-                            <a href="{{ route('booking', $property->id)}}" class="simple-btn text-heading fw-semibold">Rent Now
+                            <a href="{{ route('booking', $property->id)}}" class="simple-btn text-heading fw-semibold">Book Now
                                 <span class="icon-right text-gradient"> <i class="fas fa-plus"></i> </span>
                             </a>
                         </div>
